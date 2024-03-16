@@ -26,21 +26,25 @@ The application listens on *localhost*. Go to http://localhost/auth/ to set up c
 
 Changes
 -----
-haproxy + keycloak, article
+haproxy + keycloak, article info  
 https://www.haproxy.com/blog/using-haproxy-as-an-api-gateway-part-5-monetization
 
-OAuth 2 library for HAProxy, This installs jwtverify.lua and its dependencies to /usr/local/share/lua/5.4/jwtverify.lua
+OAuth 2 library for HAProxy, This installs jwtverify.lua and its dependencies to /usr/local/share/lua/5.4/jwtverify.lua  
 https://github.com/haproxytech/haproxy-lua-oauth
 
-need to fixeing
+## Fixeing point
+### use_backend warns
 ```
-a 'http-request' rule placed after a 'use_backend' rule will still be processed before.
+a 'http-request' rule placed after a 'use_backend' rule will still be processed before.  <-- warn
 ```
-- Change config order in the haproxy.cfg file
+- Change the order of use_backend in the haproxy.cfg file
 
-keycloak error -> move into the environment variable
+### Keycloak error
+```
 haproxy-api-monetization-demo-keycloak-1  | Option: '--http-relative-path /auth' 
 is not expected to contain whitespace, please remove any unnecessary quoting/escaping
 haproxy-api-monetization-demo-keycloak-1  | Possible solutions: 
 --http-enabled, --http-host, --http-port, --https-port, --https-cipher-suites, --https-protocols, --https-certificate-file, --https-certificate-key-file, --https-key-store-file, --https-key-store-password, --https-key-store-type, --https-trust-store-file, --https-trust-store-password, --https-trust-store-type, --http-max-queued-requests, --http-pool-max-threads, --http-relative-path, --https-client-auth
+```
+- move into the environment variable, in the docker-compose.yaml file
 
