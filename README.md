@@ -48,3 +48,8 @@ haproxy-api-monetization-demo-keycloak-1  | Possible solutions:
 ```
 - move into the environment variable, in the docker-compose.yaml file
 
+### Keycloak docker volume mount for persistence
+```
+volumes:
+      - ./data/:/opt/keycloak/data/h2/
+```
