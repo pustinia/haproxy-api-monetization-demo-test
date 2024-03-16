@@ -56,9 +56,10 @@ services:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
       - DB_VENDOR=h2
+      - KC_HTTP_RELATIVE_PATH=/auth
     networks:
       mynet:
         ipv4_address: 172.25.0.15
     command: 
       - start-dev
-      - --http-relative-path /auth
+      #- --http-relative-path /auth

@@ -1,4 +1,4 @@
-FROM haproxytech/haproxy-ubuntu:2.3
+FROM haproxytech/haproxy-ubuntu:2.9
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
 RUN apt install -y git
