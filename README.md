@@ -27,19 +27,23 @@ The application listens on *localhost*. Go to http://localhost/auth/ to set up c
 Changes
 -----
 haproxy + keycloak, article info  
-https://www.haproxy.com/blog/using-haproxy-as-an-api-gateway-part-5-monetization
+> https://www.haproxy.com/blog/using-haproxy-as-an-api-gateway-part-5-monetization
 
-OAuth 2 library for HAProxy, This installs jwtverify.lua and its dependencies to /usr/local/share/lua/5.4/jwtverify.lua  
-https://github.com/haproxytech/haproxy-lua-oauth
+OAuth 2 library for HAProxy, This installs jwtverify.lua and its dependencies to 
+ `/usr/local/share/lua/5.4/jwtverify.lua`  
+> https://github.com/haproxytech/haproxy-lua-oauth
+
+Configuring Keycloak  
+> https://www.keycloak.org/server/configuration  
 
 ## Fixeing point
-### use_backend warns
+### use_backend warn messages
 ```
 a 'http-request' rule placed after a 'use_backend' rule will still be processed before.  <-- warn
 ```
 - Change the order of use_backend in the haproxy.cfg file
 
-### Keycloak error
+### Keycloak error when startup
 ```
 haproxy-api-monetization-demo-keycloak-1  | Option: '--http-relative-path /auth' 
 is not expected to contain whitespace, please remove any unnecessary quoting/escaping
@@ -48,7 +52,7 @@ haproxy-api-monetization-demo-keycloak-1  | Possible solutions:
 ```
 - move into the environment variable, in the docker-compose.yaml file
 
-### Keycloak docker volume mount for persistence
+### Keycloak configuration for persistence
 ```
 volumes:
       - ./data/:/opt/keycloak/data/h2/

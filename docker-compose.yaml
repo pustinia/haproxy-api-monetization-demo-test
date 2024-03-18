@@ -57,9 +57,17 @@ services:
       - KEYCLOAK_ADMIN_PASSWORD=admin
       - DB_VENDOR=h2
       - KC_HTTP_RELATIVE_PATH=/auth
+      # set keycloak debug level
+      - KC_LOG_LEVEL=DEBUG
+    volumes:
+      # add keycloak disk mount
+      - ./data/:/opt/keycloak/data/h2/
     networks:
       mynet:
         ipv4_address: 172.25.0.15
-    command: 
+    command:
+      # Starting Keycloak in development mode
       - start-dev
+      # Starting Keycloak in production mode
+      # - start
       #- --http-relative-path /auth
