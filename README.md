@@ -36,7 +36,36 @@ OAuth 2 library for HAProxy, This installs jwtverify.lua and its dependencies to
 Configuring Keycloak  
 > https://www.keycloak.org/server/configuration  
 
-## Fixeing point
+All guides of keycloak
+> https://www.keycloak.org/guides#server
+
+## Remember
+### Keycloak web url  
+- development mode => http://127.0.0.1/auth/  
+### Initial id/password  
+- admin/admin  
+### Acquire Admin Access Token. Client Credentials Grant. Process Flow
+1. Create Realm. (weather-services)
+2. Create client Scopes. (bronze, silver, gold)
+      ```
+      Use Keycloak to define a shared client configuration in an entity called a client scope. A client scope configures protocol mappers and role scope mappings for multiple clients.
+      ```
+      - check the type as Default
+      - check the include in token scope
+3. Click the Create button on the Clients screen to add a new client.
+      - Client Scopes tab, add the bronze scope. Remove all of the other previously assigned client scopes. 
+4. Go to the Mappers tab and create a new mapper.
+4-1. Get secret in the client Credentials, and change client's Service accounts roles
+5. Get an Access Token.
+      ```
+      $ curl --request POST \
+      --url 'http://localhost/auth/realms/weather-services/protocol/openid-connect/token' \
+      --data 'client_id=acme-corp' \
+      --data 'client_secret=7f2587ee-a178-4152-bd91-7b758c807759' \
+      --data 'grant_type=client_credentials'
+      ```
+
+## Fixing point
 ### use_backend warn messages
 ```
 a 'http-request' rule placed after a 'use_backend' rule will still be processed before.  <-- warn
@@ -52,7 +81,7 @@ haproxy-api-monetization-demo-keycloak-1  | Possible solutions:
 ```
 - move into the environment variable, in the docker-compose.yaml file
 
-### Keycloak configuration for persistence
+### Keycloak configuration for persistence, using h2
 ```
 volumes:
       - ./data/:/opt/keycloak/data/h2/

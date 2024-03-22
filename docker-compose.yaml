@@ -57,11 +57,25 @@ services:
       - KEYCLOAK_ADMIN_PASSWORD=admin
       - DB_VENDOR=h2
       - KC_HTTP_RELATIVE_PATH=/auth
+      # set keycloak health check enabled
+      - KC_HEALTH_ENABLED=true
       # set keycloak debug level
-      - KC_LOG_LEVEL=DEBUG
+      #- KC_LOG_LEVEL=DEBUG
     volumes:
       # add keycloak disk mount
       - ./data/:/opt/keycloak/data/h2/
+    healthcheck:
+      test: timeout 10s bash -c ':> /dev/tcp/localhost/8080'
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+    logging:
+      driver: "json-file"
+      options:
+        mode: "non-blocking"
+        max-size: "10m"
+        max-file: 5
     networks:
       mynet:
         ipv4_address: 172.25.0.15
