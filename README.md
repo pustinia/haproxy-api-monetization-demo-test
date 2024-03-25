@@ -56,6 +56,7 @@ All guides of keycloak
       - Client Scopes tab, add the bronze scope. Remove all of the other previously assigned client scopes. 
 4. Go to the Mappers tab and create a new mapper.
 4-1. Get secret in the client Credentials, and change client's Service accounts roles
+4-2. Get a publickey in realm settings, and change the pubkey.pem file, and keycloak restart with pubkey.pem file
 5. Get an Access Token.
       ```
       $ curl --request POST \
@@ -63,6 +64,12 @@ All guides of keycloak
       --data 'client_id=acme-corp' \
       --data 'client_secret=7f2587ee-a178-4152-bd91-7b758c807759' \
       --data 'grant_type=client_credentials'
+      ```
+6. Use the access token, and send the request with header
+      ```
+      $ curl --request GET \
+      --url http://localhost/api/weather-services/43213 \
+      --header 'authorization: Bearer ACCESS_TOKEN'
       ```
 
 ## Fixing point
