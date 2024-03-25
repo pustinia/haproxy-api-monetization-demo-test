@@ -64,7 +64,7 @@ All guides of keycloak
         ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/4fccf2b2-1a1b-4255-94e3-19709bb8aba1)
         ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/22467c36-5067-46d2-973d-7c6dd67195ea)
       - Check the type as Default
-      - Check the include in token scope
+      - Check the include in the token scope
 
 3. Click the Create button on the Clients screen to add a new client.
       - Create Clients
@@ -82,19 +82,21 @@ All guides of keycloak
     - Add Custom Audience `http://localhost/api/weather-services`  
       ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/553fc370-5d9d-4264-9e04-b6dbbf7ff2f2)
 
-5. Get secret in the client Credentials, and change the client's Service account roles
+5. Get secret in the client Credentials
   - Clients -> Credentials -> copy Client Secret  
     ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/dd7967d9-4e0b-45a4-a07c-939b366c767e)
 
 6. Get a public key in realm settings, and change the pubkey.pem file and keycloak restarted with pubkey.pem file
    ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/a05ca89d-7260-4b0b-85dc-b67d4bb26874)
+   ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/076457d8-f071-482b-b94b-afe3db9df241)
+   ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/e3061d70-53fd-4c52-a5f6-e8285cbda122)
    ```
    $ docker-compose restart haproxy
    [+] Running 1/1
    - Container haproxy-api-monetization-demo-test-haproxy-1  Started  
    ```
 
-7. Get an Access Token.
+8. Get an Access Token.
       ```
       $ curl --request POST \
       --url 'http://localhost/auth/realms/weather-services/protocol/openid-connect/token' \
@@ -104,7 +106,7 @@ All guides of keycloak
       ```
       ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/64b16fa4-53df-476c-9294-9844bf88688d)
 
-8. Use the access token, and send the request with header
+9. Use the access token, and send the request with header
       ```
       $ curl --request GET \
       --url http://localhost/api/weather-services/43213 \
