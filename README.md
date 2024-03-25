@@ -53,19 +53,34 @@ All guides of keycloak
      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/7df746e9-bf88-49a1-acf4-92b41ef3861b)
      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/7ae789a3-a162-4d02-ab47-ae7b5680c000)
      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/6b8caf30-1ec4-46a2-acda-fefdf23f08c2)
-   - Check the default Algorithm
+   - Check the default Algorithm field to RS256
      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/cccd9986-49cc-473a-893e-9cc1f6171c5e)
 2. Create client Scopes. (bronze, silver, gold)
       ```
       Use Keycloak to define a shared client configuration in an entity called a client scope. A client scope configures protocol mappers and role scope mappings for multiple clients.
       ```
-      - check the type as Default
-      - check the include in token scope
+      - Create the Client Scopes, Add three scopes-bronze, silver, and gold
+        ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/4fccf2b2-1a1b-4255-94e3-19709bb8aba1)
+        ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/22467c36-5067-46d2-973d-7c6dd67195ea)
+      - Check the type as Default
+      - Check the include in token scope
 3. Click the Create button on the Clients screen to add a new client.
-      - Client Scopes tab, add the bronze scope. Remove all of the other previously assigned client scopes. 
+      - Create Clients
+        ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/f704c8a4-0fab-4e48-a76d-062ce30ad984)
+        ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/e7972ef7-4dbe-44c6-9bf2-16c2891ee6eb)
+        ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/204769b1-f6b7-480b-9b25-b02116165515)
+      - Client Scopes tab, add the bronze scope. Remove all of the other previously assigned client scopes
+        ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/0a98427d-05ba-4362-a938-2fe301a07b01)
 4. Go to the Mappers tab and create a new mapper.
-4-1. Get secret in the client Credentials, and change client's Service account roles
-4-2. Get a public key in realm settings, and change the pubkey.pem file and keycloak restarted with pubkey.pem file
+    - Configure a new mapper
+      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/590c48b5-b123-495f-9eda-5301731ef9eb)
+    - Click Audience
+      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/d341fd26-4e42-4b0f-8c56-5a3a9194aa02)
+    - Add Custom Audience `http://localhost/api/weather-services`
+      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/553fc370-5d9d-4264-9e04-b6dbbf7ff2f2)
+
+5. Get secret in the client Credentials, and change client's Service account roles
+6. Get a public key in realm settings, and change the pubkey.pem file and keycloak restarted with pubkey.pem file
    ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/a05ca89d-7260-4b0b-85dc-b67d4bb26874)
    ```
    $ docker-compose restart haproxy
@@ -73,7 +88,7 @@ All guides of keycloak
    - Container haproxy-api-monetization-demo-test-haproxy-1  Started  
    ```
 
-6. Get an Access Token.
+7. Get an Access Token.
       ```
       $ curl --request POST \
       --url 'http://localhost/auth/realms/weather-services/protocol/openid-connect/token' \
@@ -83,7 +98,7 @@ All guides of keycloak
       ```
       ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/64b16fa4-53df-476c-9294-9844bf88688d)
 
-7. Use the access token, and send the request with header
+8. Use the access token, and send the request with header
       ```
       $ curl --request GET \
       --url http://localhost/api/weather-services/43213 \
