@@ -41,11 +41,20 @@ All guides of keycloak
 
 ## Remember
 ### Keycloak web url  
-- development mode => http://127.0.0.1/auth/  
+- development mode => http://127.0.0.1/auth/
 ### Initial id/password  
-- admin/admin  
+- admin
+
+  ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/ff607765-d308-4c40-b8b2-dea8277ed6cb)
+    
 ### Acquire Admin Access Token. Client Credentials Grant. Process Flow
-1. Create Realm. (weather-services)
+1. Create Realm. (weather-services)  
+   - Create realm
+     ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/7df746e9-bf88-49a1-acf4-92b41ef3861b)
+     ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/7ae789a3-a162-4d02-ab47-ae7b5680c000)
+     ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/6b8caf30-1ec4-46a2-acda-fefdf23f08c2)
+
+
 2. Create client Scopes. (bronze, silver, gold)
       ```
       Use Keycloak to define a shared client configuration in an entity called a client scope. A client scope configures protocol mappers and role scope mappings for multiple clients.
