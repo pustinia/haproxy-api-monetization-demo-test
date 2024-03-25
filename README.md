@@ -114,6 +114,9 @@ All guides of keycloak
       ```
       ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/dd92926b-a351-4380-aaf7-cad1112b808b)
 
+10. Test
+    ![keycloak_check](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/51647f6c-caa1-4e07-8e15-d4c11497df21)
+
 ## Fixing point
 ### use_backend warn messages
 ```
