@@ -70,7 +70,7 @@ All guides of keycloak
       - Create Clients
         ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/f704c8a4-0fab-4e48-a76d-062ce30ad984)
         ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/e7972ef7-4dbe-44c6-9bf2-16c2891ee6eb)
-        ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/204769b1-f6b7-480b-9b25-b02116165515)
+        ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/ed3c9e5c-8dab-4366-94f4-6187ff8b1b22)
       - Client Scopes tab, add the bronze scope. Remove all of the other previously assigned client scopes
         ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/0a98427d-05ba-4362-a938-2fe301a07b01)
 
