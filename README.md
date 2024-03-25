@@ -53,8 +53,8 @@ All guides of keycloak
      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/7df746e9-bf88-49a1-acf4-92b41ef3861b)
      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/7ae789a3-a162-4d02-ab47-ae7b5680c000)
      ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/6b8caf30-1ec4-46a2-acda-fefdf23f08c2)
-
-
+   - Check the default Algorithm
+     ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/cccd9986-49cc-473a-893e-9cc1f6171c5e)
 2. Create client Scopes. (bronze, silver, gold)
       ```
       Use Keycloak to define a shared client configuration in an entity called a client scope. A client scope configures protocol mappers and role scope mappings for multiple clients.
