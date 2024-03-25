@@ -82,11 +82,11 @@ All guides of keycloak
     - Add Custom Audience `http://localhost/api/weather-services`  
       ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/553fc370-5d9d-4264-9e04-b6dbbf7ff2f2)
 
-5. Get secret in the client Credentials
+5. Get secret in the `client Credentials`
   - Clients -> Credentials -> copy Client Secret  
     ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/dd7967d9-4e0b-45a4-a07c-939b366c767e)
 
-6. Get a public key in realm settings, and change the pubkey.pem file and keycloak restarted with pubkey.pem file
+6. Get a `public key` in realm settings, and change the `pubkey.pem` file and keycloak restarted
    ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/a05ca89d-7260-4b0b-85dc-b67d4bb26874)
    ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/076457d8-f071-482b-b94b-afe3db9df241)
    ![image](https://github.com/pustinia/haproxy-api-monetization-demo-test/assets/17061046/e3061d70-53fd-4c52-a5f6-e8285cbda122)
@@ -96,7 +96,7 @@ All guides of keycloak
    - Container haproxy-api-monetization-demo-test-haproxy-1  Started  
    ```
 
-8. Get an Access Token.
+8. Get an Access Token using `Client Credentials`
       ```
       $ curl --request POST \
       --url 'http://localhost/auth/realms/weather-services/protocol/openid-connect/token' \
