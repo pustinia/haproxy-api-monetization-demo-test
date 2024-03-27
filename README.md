@@ -39,6 +39,9 @@ Configuring Keycloak
 All guides of keycloak
 > https://www.keycloak.org/guides#server
 
+Comprehensive Guide
+> https://inteca.com/identity-access-management/exploring-keycloak-jwt-a-comprehensive-guide/  
+
 ## Remember
 ### Keycloak web url  
 - development mode => http://127.0.0.1/auth/
