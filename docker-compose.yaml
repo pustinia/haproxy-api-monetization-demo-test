@@ -112,7 +112,7 @@ services:
         ipv4_address: 172.25.0.15
     command:
       # Starting Keycloak in development mode
-      #- start-dev
+      - start-dev
       # Starting Keycloak in production mode, htts, database need
       #- start
     depends_on:
