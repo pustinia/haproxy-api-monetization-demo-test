@@ -7,6 +7,9 @@ networks:
       config:
       - subnet: 172.25.0.0/24
 
+volumes:
+  postgres_data:
+
 services:
 
   haproxy:
@@ -49,18 +52,46 @@ services:
     networks:
       mynet:
         ipv4_address: 172.25.0.14
+  
+  postgres:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: 123456
+    healthcheck:
+      test: "exit 0"
+    networks:
+      mynet:
+        ipv4_address: 172.25.0.16
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest  # listens on port 8080
     environment:
+      - KC_DB=postgres
+      - KC_DB_URL_HOST=postgres
+      - KC_DB_URL_DATABASE=keycloak
+      - KC_DB_PASSWORD=123456
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_SCHEMA=public
+      # set admin id & password
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
-      - DB_VENDOR=h2
+      # set keycloak root context
       - KC_HTTP_RELATIVE_PATH=/auth
       # set keycloak health check enabled
       - KC_HEALTH_ENABLED=true
+      # set keycloak proxy forwarding enabled
+      - KC_PROXY_HEADERS=forwarded
+      #- KC_HOSTNAME=keycloakpro
+      # set database type
+      #- DB_VENDOR=h2
       # set keycloak debug level
       #- KC_LOG_LEVEL=DEBUG
+      # set keycloak proxy forwarding enabled
+      #- PROXY_ADDRESS_FORWARDING=true
     volumes:
       # add keycloak disk mount
       - ./data/:/opt/keycloak/data/h2/
@@ -81,7 +112,9 @@ services:
         ipv4_address: 172.25.0.15
     command:
       # Starting Keycloak in development mode
-      - start-dev
-      # Starting Keycloak in production mode
-      # - start
-      #- --http-relative-path /auth
+      #- start-dev
+      # Starting Keycloak in production mode, htts, database need
+      #- start
+    depends_on:
+      postgres:
+        condition: service_healthy
